@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.expected_conditions import title_is
+import time
 
 #initialize the browser setup
 driver = webdriver.Chrome()
@@ -17,6 +18,8 @@ login_button = driver.find_element(By.ID, "login-button")
 username_input.send_keys("standard_user")
 password_input.send_keys("secret_sauce")
 login_button.click()
+time.sleep(3)
+
 
 title = driver.title # To fetch the title of the page
 current_url = driver.current_url # To fetch the current URL
