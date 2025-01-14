@@ -30,8 +30,8 @@ with open(".venv/Webpage_task_11.txt", "w", encoding="utf-8") as file:
     file.write(page_source)
 
 #To print the Output
-print("Title of the webpage", title)
-print("The current URL of the webpage", current_url)
+print("Title of the webpage : ", title)
+print("The current URL of the webpage : ", current_url)
 print("content of the webpage is printer in Webpage_task_11.txt file")
 
 driver.quit()
