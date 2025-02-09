@@ -36,8 +36,8 @@ class InstagramScraper:
 
 
             # Use XPATH to locate followers and following counts
-            followers_xpath = "(//button[@type='button'])[3]"  # Update if necessary based on actual structure
-            following_xpath = "(//button[@type='button'])[4]"  # Update if necessary based on actual structure
+            followers_xpath = "(//button[@type='button'])[3]"   # Update if necessary based on actual structure
+            following_xpath = "(//button[@type='button'])[4]"   # Update if necessary based on actual structure
 
             followers = self.driver.find_element(By.XPATH, followers_xpath).text
             following = self.driver.find_element(By.XPATH, following_xpath).text
