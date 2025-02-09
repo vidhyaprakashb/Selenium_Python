@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 
@@ -16,9 +17,9 @@ class InstagramScraper:
     def close_popup(self):
         """Close the Instagram login popup if it appears."""
         try:
-            popup_close_xpath = "(//*[name()='svg'][@aria-label='Close'])[1]"
+            popup_close_xpath = "//div[contains(@class,'_abch _abck x1vjfegm _abcm')]//div[contains(@class,'x6s0dn4 x78zum5 xdt5ytf xl56j7k')]"
             close_button = self.driver.find_element(By.XPATH, popup_close_xpath)
-            close_button.click()
+            self.driver.execute_script("arguments[0].click();", close_button)  # Force click using JavaScript
         except NoSuchElementException:
             pass  # Popup did not appear
 
@@ -27,19 +28,18 @@ class InstagramScraper:
         """Fetch the number of followers and following from the given Instagram URL."""
         try:
             self.driver.get(url)
-            self.driver.refresh()
             # Wait for the page to load completely
-            self.driver.implicitly_wait(10)
+            self.driver.implicitly_wait(5)
             self.driver.refresh()
             # Close popup if it appears
-            #self.close_popup()
+            self.close_popup()
 
 
             # Use XPATH to locate followers and following counts
-            followers_xpath = "//ul/li[1]/a/div/span"  # Update if necessary based on actual structure
-            following_xpath = "//ul/li[2]/a/div/span"  # Update if necessary based on actual structure
+            followers_xpath = "(//button[@type='button'])[3]"  # Update if necessary based on actual structure
+            following_xpath = "(//button[@type='button'])[4]"  # Update if necessary based on actual structure
 
-            followers = self.driver.find_element(By.XPATH, followers_xpath).get_attribute('title')
+            followers = self.driver.find_element(By.XPATH, followers_xpath).text
             following = self.driver.find_element(By.XPATH, following_xpath).text
 
             return {
