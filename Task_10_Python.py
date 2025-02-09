@@ -56,19 +56,19 @@ class InstagramScraper:
         self.driver.quit()
 
 
-if __name__ == "__main__":
-    # Instantiate the scraper
-    scraper = InstagramScraper()
 
-    # Define the Instagram URL
-    url = "https://www.instagram.com/guviofficial/"
+# Instantiate the scraper
+scraper = InstagramScraper()
 
-    # Fetch followers and following
-    data = scraper.fetch_followers_and_following(url)
+# Define the Instagram URL
+url = "https://www.instagram.com/guviofficial/"
 
-    if data:
-        print(f"Followers: {data['followers']}")
-        print(f"Following: {data['following']}")
+# Fetch followers and following
+data = scraper.fetch_followers_and_following(url)
 
-    # Quit the driver
-    scraper.quit_driver()
+if data:
+    print(f"Followers: {data['followers']}")
+    print(f"Following: {data['following']}")
+
+# Quit the driver
+scraper.quit_driver()
