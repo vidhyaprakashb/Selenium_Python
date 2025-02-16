@@ -5,6 +5,7 @@ import random  # Importing the random module to generate random numbers
 # Create a method
 def guess_the_number():
     computer_input = random.randint(1,10)
+    # Display a welcome message
     print("Welcome to the Guess the Number Game")
 
     while True:
@@ -32,20 +33,27 @@ guess_the_number()
 
 def word_scramble_game():
     words = ['python', 'java', 'javascript', 'selenium', 'pytest']  # Store List of words in the list
-    original_word = random.choice(words)
-    scrambled_word = ''.join(random.sample(original_word, len(original_word)))
 
+    # Randomly select a word from the list
+    computer_chosen_word = random.choice(words)
+
+    # Scramble the selected word by shuffling its letters
+    scrambled_word = ''.join(random.sample(computer_chosen_word, len(computer_chosen_word)))
+
+    # Display a welcome message
     print("Welcome to the Word Scramble Game")
-    print(f" scrambled word is : {scrambled_word}")
+    print(f" scrambled word is : {scrambled_word}") # Show the scrambled word to the player
 
+    # create Loop until the player correctly unscrambles the word
     while True:
         guess = input("Enter Your guess: ").lower()
 
-        if guess == original_word:
-            print(f"Correct! the word was : '{original_word}'.")
-            break
+        # Check if the guessed word matches the original word
+        if guess == computer_chosen_word:
+            print(f"Correct! the word was : {computer_chosen_word}") # Success message
+            break # Exit the loop when the correct word is guessed
         else:
-            print("Incorrect")
+            print("Incorrect word! try again") # Ask the player to try again
 
-
+# Start the game by calling the function
 word_scramble_game()
