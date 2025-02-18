@@ -1,7 +1,7 @@
 
 import random  # Importing the random module to generate random numbers
 
-"""
+
 # Create a method
 def guess_the_number():
     computer_input = random.randint(1,10)
@@ -28,7 +28,7 @@ def guess_the_number():
 
 # Call the function
 guess_the_number()
-"""
+
 
 
 def word_scramble_game():
